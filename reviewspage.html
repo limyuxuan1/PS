@@ -61,6 +61,14 @@
             font-weight: bold;
             font-size: 1.2em;
         }
+        .crud-buttons {
+            margin-top: 10px;
+        }
+        .crud-buttons button {
+            padding: 5px 10px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -76,32 +84,120 @@
             <img src="user-icon.png" alt="User" style="width: 24px;">
         </div>
     </div>
-
-    <div class="review-container">
-        <div class="review-details">
-            <div class="username">Myusername123 <span class="star-rating">★★★★☆</span></div>
-            <p>Microsoft laptop laggy :(</p>
-            <p><em>Microsoft Surface Laptop Go - 12.4” Touchscreen</em></p>
+</body>
+    <div class="header">
         </div>
-        <img src="surface-laptop.png" alt="Microsoft Surface Laptop" class="product-image">
-    </div>
 
-    <div class="review-container">
-        <div class="review-details">
-            <div class="username">Lame <span class="star-rating">★★★★★</span></div>
-            <p>Laptop was awesome!!!!!!!!!!!!</p>
-            <p><em>Razor Blade 16 - Gaming Laptop</em></p>
+        <div style="margin: 20px;">
+            <h2>Add New Review</h2>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="text" id="rating" placeholder="Rating (★)" required>
+            <input type="text" id="product" placeholder="Product Name" required>
+            <input type="text" id="reviewText" placeholder="Review" required>
+            <button onclick="createReview()">Add Review</button>
         </div>
-        <img src="gaming-laptop.png" alt="Razor Blade 16" class="product-image">
-    </div>
+        
+        <div id="reviewsContainer"></div>
 
-    <div class="review-container">
-        <div class="review-details">
-            <div class="username">Iloveschool <span class="star-rating">★★★★★</span></div>
-            <p>Pencil Case was awesome!!!!!!!!!!!!</p>
-            <p><em>Black pencil case</em></p>
-        </div>
-        <img src="pencil-case.png" alt="Black Pencil Case" class="product-image">
-    </div>
+    <script>
+        // Example review data (would normally come from a database)
+        let reviews = [
+            { username: "Myusername123", rating: "★★★★☆", reviewText: "Microsoft laptop laggy :(", product: "Microsoft Surface Laptop Go - 12.4” Touchscreen", image: "surface-laptop.png"},
+            { username: "Lame", rating: "★★★★★", reviewText: "Laptop was awesome!!!!!!!!!!!!", product: "Razor Blade 16 - Gaming Laptop", image: "razor-blade-16.png" },
+            { username: "Iloveschool", rating: "★★★★★", reviewText: "Pencil Case was awesome!!!!!!!!!!!!", product: "Black pencil case", image: "pencil-case.png" }
+        ];
+
+        // Function to display all reviews
+        function displayReviews() {
+            const reviewsContainer = document.getElementById('reviewsContainer');
+            reviewsContainer.innerHTML = ''; // Clear existing content
+            reviews.forEach((review, index) => {
+                reviewsContainer.innerHTML += `
+                    <div class="review-container">
+                        <div class="review-details">
+                            <div class="username">${review.username} <span class="star-rating">${review.rating}</span></div>
+                            <p>${review.reviewText}</p>
+                            <p><em>${review.product}</em></p>
+                            <div class="crud-buttons">
+                                <button onclick="editReview(${index})">Edit</button>
+                                <button onclick="deleteReview(${index})">Delete</button>
+                            </div>
+                        </div>
+                        <img src="${review.image}" alt="${review.product}" class="product-image">
+                    </div>
+                `;
+            });
+        }
+
+        // CREATE function: Add new review
+        function createReview() {
+            const username = document.getElementById('username').value;
+            const rating = document.getElementById('rating').value;
+            const reviewText = document.getElementById('reviewText').value;
+            const product = document.getElementById('product').value;
+
+            // Validate input
+            if (!username || !rating || !reviewText || !product) {
+                alert('Please fill all fields');
+                return;
+            }
+
+            // Add new review to the list
+            reviews.push({ username, rating, reviewText, product });
+            displayReviews();
+            clearForm();
+        }
+
+        // READ function: Display reviews on load
+        window.onload = displayReviews;
+
+        // UPDATE function: Edit an existing review
+        function editReview(index) {
+            const review = reviews[index];
+            document.getElementById('username').value = review.username;
+            document.getElementById('rating').value = review.rating;
+            document.getElementById('reviewText').value = review.reviewText;
+            document.getElementById('product').value = review.product;
+
+            // Modify the create button to update
+            document.querySelector('button[onclick="createReview()"]').onclick = function () {
+                updateReview(index);
+            };
+            document.querySelector('button[onclick="createReview()"]').innerText = 'Update Review';
+        }
+
+        // Function to update an existing review
+        function updateReview(index) {
+            const username = document.getElementById('username').value;
+            const rating = document.getElementById('rating').value;
+            const reviewText = document.getElementById('reviewText').value;
+            const product = document.getElementById('product').value;
+
+            // Update the selected review
+            reviews[index] = { username, rating, reviewText, product };
+            displayReviews();
+            clearForm();
+
+            // Revert button text to "Add Review"
+            document.querySelector('button[onclick="updateReview(index)"]').onclick = createReview;
+            document.querySelector('button[onclick="createReview()"]').innerText = 'Add Review';
+        }
+
+        // DELETE function: Remove a review
+        function deleteReview(index) {
+            reviews.splice(index, 1);
+            displayReviews();
+        }
+
+        // Helper function to clear form
+        function clearForm() {
+            document.getElementById('username').value = '';
+            document.getElementById('rating').value = '';
+            document.getElementById('reviewText').value = '';
+            document.getElementById('product').value = '';
+        }
+    </script>
+
+    
 </body>
 </html>
