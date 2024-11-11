@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Reviews</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #dcdcf5;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #2d2c55;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        .header a {
+            color: white;
+            margin-right: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .header .search-container {
+            display: flex;
+            align-items: center;
+        }
+        .search-bar {
+            padding: 5px;
+            margin-right: 15px;
+            border-radius: 5px;
+            border: none;
+        }
+        .review-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f4f4ff;
+            margin: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .review-details {
+            width: 70%;
+        }
+        .product-image {
+            width: 150px;
+            height: auto;
+            border-radius: 5px;
+        }
+        .star-rating {
+            color: gold;
+        }
+        .username {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <a href="#">HOME</a>
+            <a href="#">CATEGORY</a>
+            <a href="#">REVIEWS</a>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search" class="search-bar">
+            <img src="cart-icon.png" alt="Cart" style="width: 24px; margin-right: 10px;">
+            <img src="user-icon.png" alt="User" style="width: 24px;">
+        </div>
+    </div>
+
+    <div class="review-container">
+        <div class="review-details">
+            <div class="username">Myusername123 <span class="star-rating">★★★★☆</span></div>
+            <p>Microsoft laptop laggy :(</p>
+            <p><em>Microsoft Surface Laptop Go - 12.4” Touchscreen</em></p>
+        </div>
+        <img src="surface-laptop.png" alt="Microsoft Surface Laptop" class="product-image">
+    </div>
+
+    <div class="review-container">
+        <div class="review-details">
+            <div class="username">Lame <span class="star-rating">★★★★★</span></div>
+            <p>Laptop was awesome!!!!!!!!!!!!</p>
+            <p><em>Razor Blade 16 - Gaming Laptop</em></p>
+        </div>
+        <img src="gaming-laptop.png" alt="Razor Blade 16" class="product-image">
+    </div>
+
+    <div class="review-container">
+        <div class="review-details">
+            <div class="username">Iloveschool <span class="star-rating">★★★★★</span></div>
+            <p>Pencil Case was awesome!!!!!!!!!!!!</p>
+            <p><em>Black pencil case</em></p>
+        </div>
+        <img src="pencil-case.png" alt="Black Pencil Case" class="product-image">
+    </div>
+</body>
+</html>

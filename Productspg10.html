@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #dcdcf5;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #2d2c55;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        .header a {
+            color: white;
+            margin-right: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .header .search-container {
+            display: flex;
+            align-items: center;
+        }
+        .search-bar {
+            padding: 5px;
+            margin-right: 15px;
+            border-radius: 5px;
+            border: none;
+        }
+        .product-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+        }
+        .product-image {
+            width: 300px;
+            height: auto;
+            border-radius: 5px;
+        }
+        .product-details {
+            max-width: 400px;
+            text-align: left;
+        }
+        .product-details p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333;
+        }
+        .product-price {
+            font-size: 18px;
+            color: #333;
+            margin-top: 10px;
+        }
+        .add-to-cart {
+            background-color: #ffdd00;
+            color: #2e2b3f;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            display: inline-block;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <a href="#">HOME</a>
+            <a href="#">CATEGORY</a>
+            <a href="#">REVIEWS</a>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search" class="search-bar">
+            <img src="cart-icon.png" alt="Cart" style="width: 24px; margin-right: 10px;">
+            <img src="user-icon.png" alt="User" style="width: 24px;">
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Laptops</h1>
+        <div class="product-container">
+            <img src="surface-laptop.png" alt="Microsoft Surface Laptop Go" class="product-image">
+            <div class="product-details">
+                <p>At under 1.13 kg and with up to 15 hours of battery, Surface Laptop Go 3 features an ultraportable design to help you breeze through work and play from anywhere. Get it all done with the performance you need, and stand apart from the crowd with a sleek design in stylish colours.</p>
+                <p class="product-price">Microsoft Surface Laptop Go - 12.4” Touchscreen<br>$1469.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
